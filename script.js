@@ -55,10 +55,30 @@ nameInput.addEventListener("keydown", (event) => {
 });
 
 againButton.addEventListener("click", () => {
+  // When a recipient came from a shared link, switch cleanly back to
+  // the creator form instead of keeping the shared-link state.
+  const wasSharedMode = greetingCard.classList.contains("shared-mode");
+
   surprise.classList.add("hidden");
-  greetingCard.classList.remove("hidden");
+  greetingCard.classList.remove("hidden", "shared-mode");
+
   nameInput.value = "";
   senderInput.value = "";
+  receiverName = "My Dear Friend";
+  senderName = "";
+
+  // Restore the creator button text.
+  wishButton.textContent = "Create Your Surprise ✨";
+
+  // Remove shared-link parameters so the page behaves like a fresh creator
+  // session and a new share URL is generated from the new wish.
+  if (wasSharedMode || urlParams.has("to") || urlParams.has("from")) {
+    const cleanURL = new URL(window.location.href);
+    cleanURL.searchParams.delete("to");
+    cleanURL.searchParams.delete("from");
+    window.history.replaceState({}, document.title, cleanURL.pathname + cleanURL.search + cleanURL.hash);
+  }
+
   nameInput.focus();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
