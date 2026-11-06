@@ -18,6 +18,9 @@ const sharedSender = urlParams.get("from");
 if (sharedName) {
   receiverName = sharedName.slice(0, 35);
   nameInput.value = receiverName;
+  // A shared link is the recipient experience: show only the surprise button.
+  greetingCard.classList.add("shared-mode");
+  wishButton.textContent = "Open Your Surprise ✨";
 }
 if (sharedSender) {
   senderName = sharedSender.slice(0, 35);

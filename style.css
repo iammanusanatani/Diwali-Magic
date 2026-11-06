@@ -86,6 +86,24 @@ button {
 button:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 10px 25px #ff9c3266; }
 .hidden { display: none; }
 
+/* Recipient view for shared personalized links */
+.shared-mode {
+  min-height: 0;
+  padding: 42px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shared-mode .card-top,
+.shared-mode h2,
+.shared-mode p,
+.shared-mode input {
+  display: none;
+}
+.shared-mode #wishButton {
+  margin: 0;
+}
+
 .surprise { margin-top: 35px; animation: reveal 1s ease; }
 @keyframes reveal {
   from { opacity: 0; transform: scale(.7) rotateY(20deg); }
