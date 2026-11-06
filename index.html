@@ -1,61 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080817">
-  <title>Diwali Magic | Spread Happiness</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#120b2b" />
+  <meta name="description" content="Share a personalized Diwali greeting with lights, diyas and fireworks." />
+  <title>Diwali Magic — Celebrate Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <canvas id="fireworks" aria-hidden="true"></canvas>
-  <div class="particles" id="particles" aria-hidden="true"></div>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
 
-  <header>
-    <div class="logo">🪔 Diwali Magic</div>
-    <div class="year">FESTIVAL OF LIGHTS ✨</div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Diwali Magic home"><span class="brand-mark">✦</span> Diwali<span>Magic</span></a>
+    <div class="top-actions">
+      <button class="icon-button" id="soundToggle" aria-label="Toggle sound" title="Sound on/off">♫ <span id="soundLabel">Sound off</span></button>
+      <button class="icon-button" id="themeToggle" aria-label="Change theme" title="Change theme">☼ <span>Theme</span></button>
+    </div>
   </header>
 
-  <main class="container">
-    <div class="diyas" aria-hidden="true">
-      <div class="diya">🪔</div><div class="diya">🪔</div><div class="diya">🪔</div>
-    </div>
-
-    <div class="tag">✨ A FESTIVAL OF LOVE &amp; LIGHT ✨</div>
-    <h1>Happy <span>Diwali</span></h1>
-    <h2>शुभ दीपावली 🪔</h2>
-    <p class="subtitle">
-      May your life shine brighter than a thousand diyas.<br>
-      आपके जीवन में खुशियों और सफलता का प्रकाश फैले।
-    </p>
-
-    <section class="card" id="greetingCard">
-      <div class="card-top">🪔 ✨ 🪔</div>
-      <h2>Someone Special?</h2>
-      <p>Enter their name to create a magical surprise.</p>
-      <input type="text" id="personName" placeholder="Enter name here..." maxlength="35" autocomplete="off">
-      <button id="wishButton">Open Your Surprise ✨</button>
+  <main>
+    <section class="hero" id="home">
+      <div class="eyebrow"><span class="live-dot"></span> A little light, a lot of love</div>
+      <div class="hero-lamp" aria-hidden="true">
+        <div class="flame" id="mainFlame"></div><div class="wick"></div>
+        <div class="bowl"><div class="bowl-shine"></div></div>
+        <div class="lamp-glow"></div>
+      </div>
+      <p class="overline">THE FESTIVAL OF LIGHTS</p>
+      <h1>Let your happiness<br><em>shine brighter.</em></h1>
+      <p class="hero-copy">Celebrate the magic of Diwali with a personal wish, glowing diyas and a sky full of fireworks.</p>
+      <div class="hero-buttons">
+        <a class="primary-button" href="#create">Create a greeting <span>↗</span></a>
+        <button class="text-button" id="celebrateBtn">Celebrate now <span>✦</span></button>
+      </div>
+      <div class="scroll-note">SCROLL TO EXPLORE <span>↓</span></div>
     </section>
 
-    <section class="surprise hidden" id="surprise" aria-live="polite">
-      <div class="big-diya">🪔</div>
-      <div class="small-tag">A SPECIAL WISH FOR YOU</div>
-      <h2 id="wishTitle">Dear Friend ❤️</h2>
-      <h1>शुभ दीपावली!</h1>
-      <p>May this Diwali bring endless happiness, good health, success and prosperity into your life.</p>
-      <p class="hindi">आपके जीवन में सुख, शांति, समृद्धि और ढेर सारी खुशियाँ आएं।</p>
-      <div class="signature">With Love ❤️<br><strong id="senderName">From Manu</strong></div>
-      <div class="buttons">
-        <button id="shareButton">Share on WhatsApp</button>
-        <button id="againButton" class="secondary">Create Another Wish</button>
+    <section class="greeting-section section-wrap" id="greeting">
+      <div class="section-heading">
+        <p class="overline">A MESSAGE FOR YOU</p>
+        <h2 id="greetingTitle">Happy Diwali!</h2>
+        <p id="greetingSubtitle">May your world be filled with light, love and new beginnings.</p>
       </div>
+      <article class="wish-card" id="wishCard">
+        <div class="card-topline"><span>✦ DIWALI WISHES ✦</span><span>01 / 03</span></div>
+        <div class="card-diya" aria-hidden="true">🪔</div>
+        <p class="wish-to" id="wishTo">To someone special</p>
+        <h3 id="wishHeadline">May your life glow<br>with endless happiness.</h3>
+        <p class="wish-message" id="wishMessage">Wishing you and your family a beautiful Diwali filled with prosperity, peace and countless reasons to smile.</p>
+        <div class="card-signoff">With warm wishes <span>♥</span></div>
+        <div class="card-decoration">✧　✦　✧</div>
+      </article>
+      <div class="greeting-controls">
+        <button class="secondary-button" id="newWishBtn">Show another wish ↻</button>
+        <button class="secondary-button" id="burstBtn">More fireworks ✨</button>
+      </div>
+    </section>
+
+    <section class="create-section section-wrap" id="create">
+      <div class="section-heading">
+        <p class="overline">MAKE IT PERSONAL</p>
+        <h2>Send a little <em>Diwali magic.</em></h2>
+        <p>Write a name, choose a wish and share your own greeting link.</p>
+      </div>
+      <div class="creator-panel">
+        <form id="greetingForm">
+          <label for="recipientName">Who are you wishing?</label>
+          <input id="recipientName" name="recipientName" type="text" maxlength="32" placeholder="Enter a name (e.g. Rahul)" autocomplete="name" />
+          <label for="wishSelect">Choose your message</label>
+          <select id="wishSelect" name="wishSelect">
+            <option value="blessings">Traditional blessings</option>
+            <option value="love">Love & happiness</option>
+            <option value="success">Success & new beginnings</option>
+            <option value="fun">Fun & festive vibes</option>
+          </select>
+          <button class="primary-button full-button" type="submit">Preview my greeting <span>✦</span></button>
+        </form>
+        <div class="creator-tip"><span>💡</span><p>Your greeting link carries the name and message in the URL. No account or database needed.</p></div>
+        <div class="share-actions">
+          <button class="whatsapp-button" id="whatsappBtn">↗ Share on WhatsApp</button>
+          <button class="secondary-button" id="copyBtn">▢ Copy greeting link</button>
+          <button class="secondary-button" id="downloadBtn">↓ Save greeting card</button>
+        </div>
+        <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="ritual-section section-wrap">
+      <div class="section-heading">
+        <p class="overline">LIGHT UP YOUR SCREEN</p>
+        <h2>Little festive moments.</h2>
+        <p>Tap the diya, make a wish and let the celebration begin.</p>
+      </div>
+      <div class="ritual-grid">
+        <button class="ritual-tile" id="diyaToggle"><span class="ritual-icon">🪔</span><strong>Light the diya</strong><small>Tap to light / dim</small><span class="tile-action">TOGGLE ↗</span></button>
+        <button class="ritual-tile" id="wishBtn"><span class="ritual-icon">⭐</span><strong>Make a wish</strong><small>Send a wish into the sky</small><span class="tile-action">MAKE A WISH ↗</span></button>
+        <button class="ritual-tile" id="rangoliBtn"><span class="ritual-icon">🌸</span><strong>Rangoli colors</strong><small>Change the festive mood</small><span class="tile-action">CHANGE COLORS ↗</span></button>
+      </div>
+    </section>
+
+    <section class="closing section-wrap">
+      <div class="closing-symbol">✺</div>
+      <h2>May light find its way<br><em>into every heart.</em></h2>
+      <p>Happy Diwali to you and your loved ones.</p>
+      <a href="#create" class="primary-button">Create another greeting ↗</a>
     </section>
   </main>
 
-  <footer>
-    Made with ❤️ by Mannu<br>
-    <span>✨ Spread Light. Spread Happiness. ✨</span>
-  </footer>
+  <footer><span>✦ Diwali Magic</span><span>Made to share happiness · No sign-up required</span></footer>
   <script src="script.js"></script>
 </body>
 </html>
