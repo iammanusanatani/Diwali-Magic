@@ -17,3 +17,17 @@ or publish it using GitHub Pages.
 
 NOTE:
 This is a static frontend project. It does not save visitor data or track link opens.
+
+
+PHASE 1 UPDATE — SENDER NAME
+----------------------------
+The original Phase 1 design and features are preserved.
+The greeting form now asks for:
+1. Sender name (your name)
+2. Receiver name (the person you are wishing)
+
+The sender name appears on the greeting card and WhatsApp message.
+Shared links include both names:
+?to=Rahul&from=Manu
+
+No database or backend is used.

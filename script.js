@@ -1,4 +1,6 @@
 const nameInput = document.getElementById("personName");
+const senderInput = document.getElementById("senderNameInput");
+const senderDisplay = document.getElementById("senderName");
 const wishButton = document.getElementById("wishButton");
 const greetingCard = document.getElementById("greetingCard");
 const surprise = document.getElementById("surprise");
@@ -7,24 +9,38 @@ const shareButton = document.getElementById("shareButton");
 const againButton = document.getElementById("againButton");
 
 let receiverName = "My Dear Friend";
-let senderName = "Manu";
+let senderName = "";
 
-// Read a recipient name from a shared URL, if present.
-const sharedName = new URLSearchParams(window.location.search).get("to");
+// Read sender and recipient names from a shared URL, if present.
+const urlParams = new URLSearchParams(window.location.search);
+const sharedName = urlParams.get("to");
+const sharedSender = urlParams.get("from");
 if (sharedName) {
   receiverName = sharedName.slice(0, 35);
   nameInput.value = receiverName;
 }
+if (sharedSender) {
+  senderName = sharedSender.slice(0, 35);
+  senderInput.value = senderName;
+}
 
 wishButton.addEventListener("click", () => {
+  const enteredSender = senderInput.value.trim();
   const name = nameInput.value.trim();
+  if (!enteredSender) {
+    alert("Please enter your name (sender name)! 😊");
+    senderInput.focus();
+    return;
+  }
   if (!name) {
-    alert("Please enter your name first! 😊");
+    alert("Please enter the receiver's name! 😊");
     nameInput.focus();
     return;
   }
 
+  senderName = enteredSender.replace(/[<>]/g, "").slice(0, 35);
   receiverName = name.replace(/[<>]/g, "").slice(0, 35);
+  senderDisplay.textContent = `From ${senderName}`;
   wishTitle.textContent = `Dear ${receiverName} ❤️`;
   greetingCard.classList.add("hidden");
   surprise.classList.remove("hidden");
@@ -39,6 +55,7 @@ againButton.addEventListener("click", () => {
   surprise.classList.add("hidden");
   greetingCard.classList.remove("hidden");
   nameInput.value = "";
+  senderInput.value = "";
   nameInput.focus();
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
@@ -46,6 +63,7 @@ againButton.addEventListener("click", () => {
 shareButton.addEventListener("click", () => {
   const personalizedURL = new URL(window.location.href);
   personalizedURL.searchParams.set("to", receiverName);
+  personalizedURL.searchParams.set("from", senderName);
 
   const message =
 `🪔✨ Happy Diwali ${receiverName}! ✨🪔
