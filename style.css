@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Tiro+Devanagari+Hindi&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root { --gold: #ffd166; --orange: #ff8c42; }
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 50% 30%, #30204a 0%, transparent 60%),
+              linear-gradient(135deg, #080817, #150b27, #090919);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+#fireworks { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.particles { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+
+.particle {
+  position: absolute; bottom: -20px; width: 4px; height: 4px;
+  background: var(--gold); border-radius: 50%;
+  box-shadow: 0 0 12px var(--gold); animation: floatUp linear infinite;
+}
+@keyframes floatUp { to { transform: translateY(-110vh) translateX(40px); opacity: 0; } }
+
+header {
+  position: relative; z-index: 2; display: flex; justify-content: space-between;
+  align-items: center; padding: 22px 8%;
+}
+.logo { color: var(--gold); font-weight: 700; font-size: 20px; }
+.year { font-size: 11px; letter-spacing: 2px; color: #e8c98b; }
+
+.container {
+  position: relative; z-index: 2; width: 90%; max-width: 850px;
+  margin: 40px auto; text-align: center; perspective: 1000px;
+}
+.diyas { display: flex; justify-content: center; gap: 45px; margin-bottom: 25px; }
+.diya { font-size: 48px; animation: diyaGlow 2s infinite alternate; filter: drop-shadow(0 0 15px #ff9c32); }
+.diya:nth-child(2) { animation-delay: .5s; }
+.diya:nth-child(3) { animation-delay: 1s; }
+@keyframes diyaGlow {
+  from { transform: translateY(0) rotate(-5deg); filter: drop-shadow(0 0 8px #ff9c32); }
+  to { transform: translateY(-12px) rotate(5deg); filter: drop-shadow(0 0 25px #ffd166); }
+}
+
+.tag, .small-tag { color: var(--gold); font-size: 12px; letter-spacing: 3px; margin-bottom: 15px; }
+.container > h1 {
+  font-size: clamp(55px, 10vw, 95px); font-weight: 800; line-height: 1.2;
+  background: linear-gradient(90deg, #fff1b8, #ffbd45, #fff5c9, #ff8c42);
+  background-size: 200%; -webkit-background-clip: text; background-clip: text;
+  color: transparent; animation: shine 4s linear infinite; text-shadow: 0 0 35px #ffae4233;
+}
+@keyframes shine { to { background-position: 200%; } }
+.container > h2 { color: #ffe2a3; font-family: 'Tiro Devanagari Hindi', serif; font-size: 30px; margin-top: 10px; }
+.subtitle { color: #d7c8e8; line-height: 2; margin: 20px auto 35px; font-size: 14px; }
+
+.card, .surprise {
+  width: 100%; max-width: 480px; margin: 0 auto; padding: 35px 28px;
+  border: 1px solid #ffd16666; border-radius: 25px;
+  background: linear-gradient(145deg, #ffffff18, #ffffff05);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 25px 60px #00000066, inset 0 1px 1px #ffffff33, 0 0 35px #ffb52b18;
+  transform-style: preserve-3d; animation: cardEnter 1s ease;
+}
+@keyframes cardEnter {
+  from { opacity: 0; transform: rotateX(15deg) translateY(35px); }
+  to { opacity: 1; transform: rotateX(0) translateY(0); }
+}
+.card-top { font-size: 35px; margin-bottom: 15px; }
+.card h2 { color: var(--gold); font-size: 23px; }
+.card p { color: #c9bedb; font-size: 13px; margin: 10px 0 22px; }
+
+input {
+  width: 100%; padding: 15px; background: #ffffff12; border: 1px solid #ffd16688;
+  outline: none; border-radius: 12px; color: white; font-family: inherit;
+  font-size: 15px; text-align: center; margin-bottom: 17px;
+}
+input::placeholder { color: #b8a9c9; }
+input:focus { border-color: var(--gold); box-shadow: 0 0 15px #ffd16644; }
+
+button {
+  border: none; border-radius: 12px; padding: 14px 22px;
+  background: linear-gradient(120deg, #ffbd45, #ff8535); color: #28142b;
+  font-weight: 700; font-size: 14px; font-family: inherit; cursor: pointer; transition: .3s;
+}
+button:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 10px 25px #ff9c3266; }
+.hidden { display: none; }
+
+.surprise { margin-top: 35px; animation: reveal 1s ease; }
+@keyframes reveal {
+  from { opacity: 0; transform: scale(.7) rotateY(20deg); }
+  to { opacity: 1; transform: scale(1) rotateY(0); }
+}
+.big-diya { font-size: 75px; filter: drop-shadow(0 0 25px #ffb52b); animation: diyaGlow 1.5s infinite alternate; }
+.surprise h2 { color: white; margin: 12px 0; font-size: 25px; }
+.surprise h1 { color: var(--gold); font-family: 'Tiro Devanagari Hindi', serif; font-size: 40px; margin: 15px 0; }
+.surprise p { color: #e4d9ee; font-size: 14px; line-height: 1.9; margin: 15px 0; }
+.hindi { font-family: 'Tiro Devanagari Hindi', serif; }
+.signature { margin: 25px 0; color: var(--gold); line-height: 1.9; }
+.buttons { display: flex; flex-direction: column; gap: 12px; }
+#shareButton { background: linear-gradient(120deg, #55dc91, #17a866); color: #062b19; }
+.secondary { background: transparent; color: white; border: 1px solid #ffd16677; }
+
+footer { position: relative; z-index: 2; text-align: center; padding: 30px 10px; color: #d5c2a0; font-size: 13px; line-height: 2; }
+footer span { color: var(--gold); font-size: 11px; }
+
+@media (max-width: 600px) {
+  header { padding: 18px 5%; }
+  .logo { font-size: 16px; }
+  .year { font-size: 9px; letter-spacing: 1px; }
+  .container { margin: 35px auto; }
+  .diyas { gap: 25px; }
+  .diya { font-size: 38px; }
+  .card, .surprise { padding: 28px 20px; }
+  .container > h2 { font-size: 25px; }
+  .surprise h1 { font-size: 32px; }
+}

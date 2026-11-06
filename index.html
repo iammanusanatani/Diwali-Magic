@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080817">
+  <title>Diwali Magic | Spread Happiness</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="fireworks" aria-hidden="true"></canvas>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header>
+    <div class="logo">🪔 Diwali Magic</div>
+    <div class="year">FESTIVAL OF LIGHTS ✨</div>
+  </header>
+
+  <main class="container">
+    <div class="diyas" aria-hidden="true">
+      <div class="diya">🪔</div><div class="diya">🪔</div><div class="diya">🪔</div>
+    </div>
+
+    <div class="tag">✨ A FESTIVAL OF LOVE &amp; LIGHT ✨</div>
+    <h1>Happy <span>Diwali</span></h1>
+    <h2>शुभ दीपावली 🪔</h2>
+    <p class="subtitle">
+      May your life shine brighter than a thousand diyas.<br>
+      आपके जीवन में खुशियों और सफलता का प्रकाश फैले।
+    </p>
+
+    <section class="card" id="greetingCard">
+      <div class="card-top">🪔 ✨ 🪔</div>
+      <h2>Someone Special?</h2>
+      <p>Enter their name to create a magical surprise.</p>
+      <input type="text" id="personName" placeholder="Enter name here..." maxlength="35" autocomplete="off">
+      <button id="wishButton">Open Your Surprise ✨</button>
+    </section>
+
+    <section class="surprise hidden" id="surprise" aria-live="polite">
+      <div class="big-diya">🪔</div>
+      <div class="small-tag">A SPECIAL WISH FOR YOU</div>
+      <h2 id="wishTitle">Dear Friend ❤️</h2>
+      <h1>शुभ दीपावली!</h1>
+      <p>May this Diwali bring endless happiness, good health, success and prosperity into your life.</p>
+      <p class="hindi">आपके जीवन में सुख, शांति, समृद्धि और ढेर सारी खुशियाँ आएं।</p>
+      <div class="signature">With Love ❤️<br><strong id="senderName">From Manu</strong></div>
+      <div class="buttons">
+        <button id="shareButton">Share on WhatsApp</button>
+        <button id="againButton" class="secondary">Create Another Wish</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Made with ❤️ by Mannu<br>
+    <span>✨ Spread Light. Spread Happiness. ✨</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
